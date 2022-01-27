@@ -54,4 +54,66 @@ Array.Reverse(n1);
 foreach (int item in n1)
 {
     Console.WriteLine(item);
+//================================================
+static void Main(string[] args)
+{
+    int n1, n2, result;
+    n1 = n2 = result = 0;
+    try
+    {
+        result = n1 / n2;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
+//===========================================
+static void Main(string[] args)
+{
+    Dictionary<int, string> veic = new Dictionary<int, string>();
+
+    veic.Add(10, "carro");
+    veic.Add(20, "moto");
+    veic.Add(30, "barco");
+    veic.Add(40, "avião");
+
+    veic.Remove(20);
+
+    Console.WriteLine(veic[30]);
+    veic[30] = "bike";
+    Console.WriteLine(veic[30]);
+
+    Console.WriteLine("tamanho {0}", veic.Count);
+
+    if (veic.ContainsKey(10))
+    {
+        Console.WriteLine("achou");
+    }
+    if (veic.ContainsValue("avião"))
+    {
+        Console.WriteLine("achou");
+    }
+
+    foreach (var item in veic)
+    {
+        Console.WriteLine("{0} - {1}",item.Key, item.Value);
+    }
+}
+class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<string> veic = new LinkedList<string>();
+
+            veic.AddFirst("carro");
+            veic.AddFirst("moto");
+            veic.AddFirst("barco");
+            veic.AddFirst("avião");
+
+            veic.AddLast("bike");
+
+        }
+    }
+    
 }*/

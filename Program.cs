@@ -5,49 +5,15 @@ namespace estudosCsharp
     {
         static void Main(string[] args)
         {
-            Carro c = new Carro("santana", "verde");
+            List<string> veic = new List<string>();
 
-            c.setLigar();
+            veic.Add("carro");
+            veic.Add("moto");
+            veic.Add("barco");
+            veic.Add("avião");
 
-            Console.WriteLine(c.velMax);
-            //Console.WriteLine(c.ligado);
-            Console.WriteLine(c.getRodas());
-        }
+            veic.Remove("bike");
 
-    }
-    public class Veiculo
-    {
-        private int rodas;
-        public int velMax;
-        protected bool ligado;
-
-        public Veiculo(int rodas)
-        {
-            this.rodas = rodas;
-        }
-
-        public int getRodas(){
-            return rodas;
-        }
-
-        public void setLigar()
-        {
-            this.ligado = true;
-        }
-        public void setdesligar()
-        {
-            this.ligado = false;
-        }
-    }
-    public class Carro : Veiculo
-    {
-        public string nome;
-        public string cor;
-        public Carro(string nome, string cor):base(4)
-        {
-            this.cor = cor;
-            this.nome = nome;
-            velMax = 120;
         }
     }
 }
