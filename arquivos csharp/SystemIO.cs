@@ -1,4 +1,75 @@
 /*
+    LerCsvDeli();
+
+            
+            using var sr = new StreamReader(fi.FullName);
+            var csvConfig = new CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture);
+            using var csvReader = new CsvReader(sr, csvConfig);
+
+            var registros = csvReader.GetRecords<dynamic>();
+
+            foreach (var item in registros)
+            {
+                WriteLine($"nome: {item.Nome}");
+                WriteLine($"email: {item.Email}");
+                WriteLine($"telefone: {item.Telefone}");
+                WriteLine($"nascimento: {item.Nascimento}");
+                WriteLine("--------------------");
+            }
+            
+        }
+        static void LerCsvDeli()
+        {
+            var path = Path.Combine(Environment.CurrentDirectory,"arquivos_stream", "Entrada", "usuario-delimitador.csv");
+            var fi = new FileInfo(path);
+
+            if(!fi.Exists)
+                throw new FileNotFoundException($"o arquivo {path} não existe");
+
+            using var sr = new StreamReader(fi.FullName);
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ";"
+            };
+            using var csvReader = new CsvReader(sr, csvConfig);
+            //uso de mapping no arquivo Usuariomap.cs
+            //csvReader.Context.RegisterClassMap<UsuarioMap>();
+            var registros = csvReader.GetRecords<Usuario>().ToList();
+
+            foreach (var item in registros)
+            {
+                WriteLine($"nome: {item.Nome}");
+                WriteLine($"email: {item.Email}");
+                WriteLine($"telefone: {item.Telefone}");
+                WriteLine($"nascimento: {item.Nascimento}");
+                WriteLine($"altura: {item.Altura}");
+                WriteLine("--------------------");
+            }
+        }
+        static void LerCsvClasse()
+        {
+            var path = Path.Combine(Environment.CurrentDirectory,"arquivos_stream", "Entrada", "usuario-exportacao.csv");
+            var fi = new FileInfo(path);
+
+            if(!fi.Exists)
+                throw new FileNotFoundException($"o arquivo {path} não existe");
+
+            using var sr = new StreamReader(fi.FullName);
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
+            using var csvReader = new CsvReader(sr, csvConfig);
+
+            var registros = csvReader.GetRecords<Usuario>().ToList();
+
+            foreach (var item in registros)
+            {
+                WriteLine($"nome: {item.Nome}");
+                WriteLine($"email: {item.Email}");
+                WriteLine($"telefone: {item.Telefone}");
+                WriteLine($"nascimento: {item.Nascimento}");
+                WriteLine("--------------------");
+            }
+        }
+============================================================================
 static void CriarCsv()
         {
             var path = Path.Combine(Environment.CurrentDirectory,"arquivos_stream","Saida", "usuarios.csv");
