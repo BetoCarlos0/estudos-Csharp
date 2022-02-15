@@ -44,7 +44,8 @@ namespace estudosCsharp.arquivos_stream
                 Delimiter = ";"
             };
             using var csvReader = new CsvReader(sr, csvConfig);
-
+            //uso de mapping no arquivo Usuariomap.cs
+            //csvReader.Context.RegisterClassMap<UsuarioMap>();
             var registros = csvReader.GetRecords<Usuario>().ToList();
 
             foreach (var item in registros)
@@ -53,6 +54,7 @@ namespace estudosCsharp.arquivos_stream
                 WriteLine($"email: {item.Email}");
                 WriteLine($"telefone: {item.Telefone}");
                 WriteLine($"nascimento: {item.Nascimento}");
+                WriteLine($"altura: {item.Altura}");
                 WriteLine("--------------------");
             }
         }
