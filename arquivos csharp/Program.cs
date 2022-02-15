@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace estudosCsharp
 {
     class Program
-    {
+    {/*
         static void Main(string[] args)
         {
             List<string> veic = new List<string>();
@@ -14,7 +16,7 @@ namespace estudosCsharp
 
             veic.Remove("bike");
 
-        }
+        }*/
     }
 }
 
