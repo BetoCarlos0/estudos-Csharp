@@ -430,5 +430,19 @@ class Program
         }
     }
     //==============================================
-    
+    var p1 = new Pair<string, double>("teclado", 150.50);
+
+        WriteLine($"produto: {p1.First}, valor: {p1.Second}");
+    }
+    public class Pair<TFirst, TSecond>
+    {
+        public TFirst First { get; }
+        public TSecond Second { get; }
+
+        public Pair(TFirst first, TSecond second)
+        {
+            First = first;
+            Second = second;
+        }
+    }
 */
