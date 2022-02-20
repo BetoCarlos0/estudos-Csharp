@@ -3,7 +3,7 @@ using estudos_Csharp.arquivos.Helper;
 namespace estudos_Csharp.arquivos
 {
     public class Program
-    {
+    {/*
         static void Main(string[] args)
         {
             var path = Path.Combine(Environment.CurrentDirectory);
@@ -13,6 +13,6 @@ namespace estudos_Csharp.arquivos
 
             var paths = new FileHelper();
             paths.ListFiles(path);
-        }
+        }*/
     }
 }
