@@ -115,5 +115,16 @@ class Program
 
         }
     }
-    
+//===========================================
+string nome = GetNome<string>("beto");
+Console.WriteLine(nome);
+
+public T GetNome<T>(T nome)
+{
+    return nome;
+}
+public T GetNomeOutrosTipos<T, T>(T nome, T idade)
+{
+    return nome;
+}
 }*/
