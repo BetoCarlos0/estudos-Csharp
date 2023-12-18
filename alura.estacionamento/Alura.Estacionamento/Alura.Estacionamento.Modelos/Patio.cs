@@ -1,10 +1,7 @@
 ﻿using Alura.Estacionamento.Alura.Estacionamento.Modelos;
-using Alura.Estacionamento.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alura.Estacionamento.Modelos
 {
@@ -18,8 +15,11 @@ namespace Alura.Estacionamento.Modelos
         }
         private List<Veiculo> veiculos;
         private double faturado;
+        private Operador _operadorPatio;
+
         public double Faturado { get => faturado; set => faturado = value; }
-        public List<Veiculo> Veiculos { get => veiculos; set => veiculos = value; }       
+        public List<Veiculo> Veiculos { get => veiculos; set => veiculos = value; }
+        public Operador OperadorPatio { get => _operadorPatio; set => _operadorPatio = value; }
         public double TotalFaturado()
         {
             return this.Faturado;
@@ -33,8 +33,9 @@ namespace Alura.Estacionamento.Modelos
 
         public void RegistrarEntradaVeiculo(Veiculo veiculo)
         {
-            veiculo.HoraEntrada = DateTime.Now;            
-            this.Veiculos.Add(veiculo);            
+            veiculo.HoraEntrada = DateTime.Now;
+            veiculo.Ticket = GerarTicket(veiculo);
+            Veiculos.Add(veiculo);            
         }
 
         public string RegistrarSaidaVeiculo(String placa)
@@ -83,18 +84,35 @@ namespace Alura.Estacionamento.Modelos
             return informacao;
         }
 
-        public Veiculo PesquisaVeiculo(string placa)
+        public Veiculo PesquisaVeiculoPorTicket(string ticket)
         {
-            return veiculos.FirstOrDefault(x => x.Placa == placa);
+            return veiculos.FirstOrDefault(x => x.IdTicket == ticket);
+        }
+
+        public Veiculo PesquisaVeiculoPorPlaca(string idTicket)
+        {
+            return veiculos.FirstOrDefault(x => x.Ticket == idTicket);
         }
 
         public Veiculo AlterarDadosVeiculo(Veiculo veicuAlterado)
         {
             var veiculoTemp = veiculos.FirstOrDefault(x => x.Placa == veicuAlterado.Placa);
 
-            veiculoTemp.AlterarDados(veicuAlterado);
+            veiculoTemp.AlterarDadosVeiculo(veicuAlterado);
 
             return veiculoTemp;
+        }
+
+        private string GerarTicket(Veiculo veiculo)
+        {
+            string identificador = new Guid().ToString().Substring(0, 5);
+            veiculo.IdTicket = identificador;
+            string ticket = "### Ticket Estacionameno Alura ###" +
+                           $">>> Identificador: {identificador}" +
+                           $">>> Data/Hora de Entrada: {DateTime.Now}" +
+                           $">>> Placa Veículo: {veiculo.Placa}" +
+                           $">>> Operador: {OperadorPatio.Matricula}";
+            return ticket;
         }
     }
 }
